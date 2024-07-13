@@ -8,9 +8,9 @@ import sys
 
 def json_to_csv(input_path, output_path):
     try:
-        with open(input_path, 'r', encoding='utf-8') as f:
+        with open(input_path, 'r') as f:
             data = json.loads(f.read())
-
+            
         if not data:
             raise ValueError("JSON data is empty.")
 
@@ -21,7 +21,7 @@ def json_to_csv(input_path, output_path):
             row = ','.join(str(obj[key]) for key in headers)
             output += f'\n{row}'
 
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, 'w') as f:
             f.write(output)
         
         print(f'Successfully converted {input_path} to {output_path}')
